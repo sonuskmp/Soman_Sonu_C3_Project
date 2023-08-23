@@ -54,7 +54,7 @@ class RestaurantTest {
     public void removing_item_that_does_not_exist_should_throw_exception() {
         assertThrows(itemNotFoundException.class,
                 ()->restaurant.removeFromMenu("French fries"));
-    }
+    }    
     
     @Test
     public void getting_order_total_for_selected_items() {
@@ -62,7 +62,12 @@ class RestaurantTest {
     	itemNames.add("Sweet corn soup");
     	itemNames.add("Vegetable lasagne");    	
     	assertEquals(388, restaurant.calculateOrderValue(itemNames)); 
-    	//Calculating  order value by adding price of each selected menu items
+    }
+    
+    @Test
+    public void getting_order_total_when_itemNames_empty() {
+    	List<String> itemNames = new ArrayList<>();    	
+    	assertEquals(0, restaurant.calculateOrderValue(itemNames));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
